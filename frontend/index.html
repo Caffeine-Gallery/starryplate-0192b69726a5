@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michelin Star Restaurant</title>
+    <title>Étoile - Michelin Star Restaurant</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Michelin Star Restaurant</h1>
+        <div class="logo">Étoile</div>
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -20,13 +21,18 @@
     </header>
 
     <main>
+        <section id="hero">
+            <h1>Experience Culinary Excellence</h1>
+            <p>Welcome to Étoile, where gastronomic artistry meets unparalleled service</p>
+        </section>
+
         <section id="about">
-            <h2>About Us</h2>
+            <h2>Our Story</h2>
             <p id="about-content"></p>
         </section>
 
         <section id="menu">
-            <h2>Our Menu</h2>
+            <h2>Curated Menu</h2>
             <div id="menu-items"></div>
         </section>
 
@@ -36,7 +42,7 @@
         </section>
 
         <section id="reservation">
-            <h2>Make a Reservation</h2>
+            <h2>Reserve Your Experience</h2>
             <form id="reservation-form">
                 <input type="text" id="name" placeholder="Name" required>
                 <input type="email" id="email" placeholder="Email" required>
@@ -49,7 +55,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Michelin Star Restaurant. All rights reserved.</p>
+        <p>&copy; 2023 Étoile Restaurant. All rights reserved.</p>
     </footer>
 
     <script type="module" src="index.js"></script>

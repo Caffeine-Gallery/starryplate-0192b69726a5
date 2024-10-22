@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const imgElement = document.createElement('img');
       imgElement.src = pic;
       imgElement.alt = 'Restaurant Image';
+      imgElement.loading = 'lazy';
       galleryContainer.appendChild(imgElement);
     });
 
@@ -42,15 +43,48 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       try {
         await backend.makeReservation(name, email, date, time, guests);
-        alert('Reservation made successfully!');
+        showNotification('Reservation made successfully!', 'success');
         reservationForm.reset();
       } catch (error) {
         console.error('Error making reservation:', error);
-        alert('Failed to make reservation. Please try again.');
+        showNotification('Failed to make reservation. Please try again.', 'error');
       }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
     });
 
   } catch (error) {
     console.error('Error fetching data:', error);
+    showNotification('Failed to load content. Please refresh the page.', 'error');
   }
+});
+
+function showNotification(message, type) {
+  const notification = document.createElement('div');
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+}
+
+// Add some animations
+window.addEventListener('scroll', () => {
+  const elements = document.querySelectorAll('.menu-item, #picture-gallery img');
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+    if (isVisible) {
+      el.classList.add('fade-in');
+    }
+  });
 });
