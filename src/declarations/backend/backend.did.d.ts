@@ -2,6 +2,11 @@ import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
 import type { IDL } from '@dfinity/candid';
 
+export interface GalleryImage {
+  'url' : string,
+  'description' : string,
+  'category' : string,
+}
 export interface MenuItem {
   'name' : string,
   'description' : string,
@@ -10,8 +15,8 @@ export interface MenuItem {
 }
 export interface _SERVICE {
   'getAbout' : ActorMethod<[], string>,
+  'getGalleryImages' : ActorMethod<[], Array<GalleryImage>>,
   'getMenu' : ActorMethod<[], Array<MenuItem>>,
-  'getPictures' : ActorMethod<[], Array<string>>,
   'makeReservation' : ActorMethod<
     [string, string, string, string, bigint],
     undefined

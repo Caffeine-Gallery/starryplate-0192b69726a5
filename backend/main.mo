@@ -22,6 +22,12 @@ actor Steakhouse {
     guests: Nat;
   };
 
+  type GalleryImage = {
+    url: Text;
+    category: Text;
+    description: Text;
+  };
+
   // Restaurant data
   let about : Text = "Welcome to Prime Cut Steakhouse, where we serve the finest quality steaks in a sophisticated and warm atmosphere. Our expert chefs prepare each cut to perfection, ensuring a memorable dining experience for all our guests.";
   
@@ -45,11 +51,19 @@ actor Steakhouse {
     { name = "Chocolate Lava Cake"; description = "Warm chocolate cake with a molten center"; price = 14; category = "Desserts" }
   ];
 
-  stable var pictures : [Text] = [
-    "steakhouse-interior.jpg",
-    "signature-steak.jpg",
-    "chef-grilling.jpg",
-    "wine-selection.jpg"
+  stable var galleryImages : [GalleryImage] = [
+    { url = "cow-grazing.jpg"; category = "Ranch"; description = "Cows grazing on lush green pastures" },
+    { url = "ranch-landscape.jpg"; category = "Ranch"; description = "Scenic view of our partner ranch" },
+    { url = "cattle-herd.jpg"; category = "Ranch"; description = "A herd of premium cattle" },
+    { url = "raw-beef-cuts.jpg"; category = "Beef"; description = "Various cuts of raw beef" },
+    { url = "marbled-beef.jpg"; category = "Beef"; description = "Close-up of beautifully marbled beef" },
+    { url = "dry-aged-beef.jpg"; category = "Beef"; description = "Our dry-aging process for beef" },
+    { url = "grilled-steak.jpg"; category = "Steak"; description = "Perfectly grilled steak" },
+    { url = "steak-platter.jpg"; category = "Steak"; description = "Assortment of our signature steaks" },
+    { url = "steak-preparation.jpg"; category = "Steak"; description = "Chef preparing a steak in the kitchen" },
+    { url = "steakhouse-interior.jpg"; category = "Restaurant"; description = "Elegant interior of our steakhouse" },
+    { url = "chef-portrait.jpg"; category = "Restaurant"; description = "Our head chef at work" },
+    { url = "wine-selection.jpg"; category = "Restaurant"; description = "Our extensive wine collection" }
   ];
 
   stable var reservations : [Reservation] = [];
@@ -63,8 +77,8 @@ actor Steakhouse {
     menuItems
   };
 
-  public query func getPictures() : async [Text] {
-    pictures
+  public query func getGalleryImages() : async [GalleryImage] {
+    galleryImages
   };
 
   // Update calls

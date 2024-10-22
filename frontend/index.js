@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const menuContainer = document.getElementById('menu-items');
     const menuCategories = document.getElementById('menu-categories');
 
-    // Get unique categories
-    const categories = [...new Set(menuItems.map(item => item.category))];
+    // Get unique menu categories
+    const menuCats = [...new Set(menuItems.map(item => item.category))];
 
-    // Create category buttons
-    categories.forEach(category => {
+    // Create menu category buttons
+    menuCats.forEach(category => {
       const button = document.createElement('button');
       button.textContent = category;
       button.addEventListener('click', () => filterMenu(category));
@@ -46,16 +46,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initially display all menu items
     displayMenuItems(menuItems);
 
-    // Fetch and display pictures
-    const pictures = await backend.getPictures();
-    const galleryContainer = document.getElementById('picture-gallery');
-    pictures.forEach(pic => {
-      const imgElement = document.createElement('img');
-      imgElement.src = pic;
-      imgElement.alt = 'Steakhouse Image';
-      imgElement.loading = 'lazy';
-      galleryContainer.appendChild(imgElement);
+    // Fetch and display gallery images
+    const galleryImages = await backend.getGalleryImages();
+    const galleryContainer = document.getElementById('gallery-images');
+    const galleryCategories = document.getElementById('gallery-categories');
+
+    // Get unique gallery categories
+    const galleryCats = [...new Set(galleryImages.map(img => img.category))];
+
+    // Create gallery category buttons
+    galleryCats.forEach(category => {
+      const button = document.createElement('button');
+      button.textContent = category;
+      button.addEventListener('click', () => filterGallery(category));
+      galleryCategories.appendChild(button);
     });
+
+    // Function to filter gallery images
+    function filterGallery(category) {
+      galleryContainer.innerHTML = '';
+      const filteredImages = galleryImages.filter(img => img.category === category);
+      displayGalleryImages(filteredImages);
+    }
+
+    // Function to display gallery images
+    function displayGalleryImages(images) {
+      images.forEach(img => {
+        const imgElement = document.createElement('div');
+        imgElement.className = 'gallery-item';
+        imgElement.innerHTML = `
+          <img src="${img.url}" alt="${img.description}" loading="lazy">
+          <p>${img.description}</p>
+        `;
+        galleryContainer.appendChild(imgElement);
+      });
+    }
+
+    // Initially display all gallery images
+    displayGalleryImages(galleryImages);
 
     // Handle reservation form submission
     const reservationForm = document.getElementById('reservation-form');
@@ -105,7 +133,7 @@ function showNotification(message, type) {
 
 // Add some animations
 window.addEventListener('scroll', () => {
-  const elements = document.querySelectorAll('.menu-item, #picture-gallery img');
+  const elements = document.querySelectorAll('.menu-item, .gallery-item');
   elements.forEach(el => {
     const rect = el.getBoundingClientRect();
     const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;

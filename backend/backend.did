@@ -5,9 +5,15 @@ type MenuItem =
    name: text;
    price: nat;
  };
+type GalleryImage = 
+ record {
+   category: text;
+   description: text;
+   url: text;
+ };
 service : {
   getAbout: () -> (text) query;
+  getGalleryImages: () -> (vec GalleryImage) query;
   getMenu: () -> (vec MenuItem) query;
-  getPictures: () -> (vec text) query;
   makeReservation: (text, text, text, text, nat) -> ();
 }
