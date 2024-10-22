@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelin Star Restaurant</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>Michelin Star Restaurant</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Us</h2>
+            <p id="about-content"></p>
+        </section>
+
+        <section id="menu">
+            <h2>Our Menu</h2>
+            <div id="menu-items"></div>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div id="picture-gallery"></div>
+        </section>
+
+        <section id="reservation">
+            <h2>Make a Reservation</h2>
+            <form id="reservation-form">
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="date" id="date" required>
+                <input type="time" id="time" required>
+                <input type="number" id="guests" placeholder="Number of guests" required>
+                <button type="submit">Reserve</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Michelin Star Restaurant. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

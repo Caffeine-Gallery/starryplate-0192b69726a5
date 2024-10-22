@@ -1,0 +1,12 @@
+type MenuItem = 
+ record {
+   description: text;
+   name: text;
+   price: nat;
+ };
+service : {
+  getAbout: () -> (text) query;
+  getMenu: () -> (vec MenuItem) query;
+  getPictures: () -> (vec text) query;
+  makeReservation: (text, text, text, text, nat) -> ();
+}
