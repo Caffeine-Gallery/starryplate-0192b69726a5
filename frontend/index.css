@@ -3,21 +3,26 @@
     --secondary-color: #f0e6d9;
     --accent-color: #b8860b;
     --text-color: #333;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     color: var(--text-color);
-    background-color: var(--secondary-color);
+    background-color: var(--white);
 }
 
 header {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 1rem;
+    color: var(--white);
+    padding: 1rem 5%;
     position: fixed;
     width: 100%;
     top: 0;
@@ -25,6 +30,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo {
@@ -35,7 +41,6 @@ header {
 }
 
 nav ul {
-    padding: 0;
     list-style-type: none;
     display: flex;
 }
@@ -45,8 +50,9 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--secondary-color);
+    color: var(--white);
     text-decoration: none;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
@@ -59,7 +65,7 @@ main {
 }
 
 section {
-    padding: 4rem 2rem;
+    padding: 6rem 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -70,31 +76,57 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-}
-
-h2 {
-    font-size: 2.5rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
 }
 
+h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
 #hero {
-    background-image: url('hero-steak.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-steak.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--white);
 }
 
-#hero h1, #hero p {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 1rem;
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #9e7209;
 }
 
 #menu-categories, #gallery-categories {
@@ -106,12 +138,14 @@ h2 {
 
 #menu-categories button, #gallery-categories button {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--white);
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1.5rem;
     margin: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    border-radius: 5px;
+    font-weight: 500;
 }
 
 #menu-categories button:hover, #gallery-categories button:hover {
@@ -125,7 +159,7 @@ h2 {
 }
 
 .menu-item {
-    background-color: #fff;
+    background-color: var(--white);
     border: 1px solid #ddd;
     padding: 2rem;
     border-radius: 8px;
@@ -135,6 +169,11 @@ h2 {
 
 .menu-item:hover {
     transform: translateY(-5px);
+}
+
+.menu-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .price {
@@ -173,9 +212,9 @@ h2 {
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    color: var(--secondary-color);
+    color: var(--white);
     margin: 0;
-    padding: 0.5rem;
+    padding: 0.8rem;
     font-size: 0.9rem;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -194,18 +233,19 @@ form {
 
 input, button {
     margin-bottom: 1rem;
-    padding: 0.8rem;
+    padding: 1rem;
     font-size: 1rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 button {
     background-color: var(--accent-color);
-    color: var(--primary-color);
+    color: var(--white);
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 700;
 }
 
 button:hover {
@@ -214,9 +254,9 @@ button:hover {
 
 footer {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--white);
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
     margin-top: 2rem;
 }
 
@@ -225,9 +265,10 @@ footer {
     top: 20px;
     right: 20px;
     padding: 1rem;
-    border-radius: 4px;
-    color: #fff;
+    border-radius: 5px;
+    color: var(--white);
     z-index: 1001;
+    font-weight: 500;
 }
 
 .notification.success {
@@ -250,6 +291,7 @@ footer {
 @media (max-width: 768px) {
     header {
         flex-direction: column;
+        padding: 1rem;
     }
 
     nav ul {
@@ -260,11 +302,19 @@ footer {
         margin: 0 10px;
     }
 
-    #hero h1 {
-        font-size: 2rem;
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
     }
 
     section {
-        padding: 2rem 1rem;
+        padding: 4rem 1rem;
     }
 }
