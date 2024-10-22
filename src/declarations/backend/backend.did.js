@@ -2,6 +2,7 @@ export const idlFactory = ({ IDL }) => {
   const MenuItem = IDL.Record({
     'name' : IDL.Text,
     'description' : IDL.Text,
+    'category' : IDL.Text,
     'price' : IDL.Nat,
   });
   return IDL.Service({

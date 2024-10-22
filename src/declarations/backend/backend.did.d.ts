@@ -5,6 +5,7 @@ import type { IDL } from '@dfinity/candid';
 export interface MenuItem {
   'name' : string,
   'description' : string,
+  'category' : string,
   'price' : bigint,
 }
 export interface _SERVICE {

@@ -1,5 +1,6 @@
 type MenuItem = 
  record {
+   category: text;
    description: text;
    name: text;
    price: nat;

@@ -9,16 +9,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fetch and display menu items
     const menuItems = await backend.getMenu();
     const menuContainer = document.getElementById('menu-items');
-    menuItems.forEach(item => {
-      const itemElement = document.createElement('div');
-      itemElement.className = 'menu-item';
-      itemElement.innerHTML = `
-        <h3>${item.name}</h3>
-        <p>${item.description}</p>
-        <p class="price">$${item.price}</p>
-      `;
-      menuContainer.appendChild(itemElement);
+    const menuCategories = document.getElementById('menu-categories');
+
+    // Get unique categories
+    const categories = [...new Set(menuItems.map(item => item.category))];
+
+    // Create category buttons
+    categories.forEach(category => {
+      const button = document.createElement('button');
+      button.textContent = category;
+      button.addEventListener('click', () => filterMenu(category));
+      menuCategories.appendChild(button);
     });
+
+    // Function to filter menu items
+    function filterMenu(category) {
+      menuContainer.innerHTML = '';
+      const filteredItems = menuItems.filter(item => item.category === category);
+      displayMenuItems(filteredItems);
+    }
+
+    // Function to display menu items
+    function displayMenuItems(items) {
+      items.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'menu-item';
+        itemElement.innerHTML = `
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <p class="price">$${item.price}</p>
+        `;
+        menuContainer.appendChild(itemElement);
+      });
+    }
+
+    // Initially display all menu items
+    displayMenuItems(menuItems);
 
     // Fetch and display pictures
     const pictures = await backend.getPictures();
@@ -26,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     pictures.forEach(pic => {
       const imgElement = document.createElement('img');
       imgElement.src = pic;
-      imgElement.alt = 'Restaurant Image';
+      imgElement.alt = 'Steakhouse Image';
       imgElement.loading = 'lazy';
       galleryContainer.appendChild(imgElement);
     });

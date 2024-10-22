@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #1a1a1a;
-    --secondary-color: #f0f0f0;
-    --accent-color: #d4af37;
+    --primary-color: #2c1a0e;
+    --secondary-color: #f0e6d9;
+    --accent-color: #b8860b;
     --text-color: #333;
 }
 
@@ -80,7 +80,7 @@ h2 {
 }
 
 #hero {
-    background-image: url('hero-image.jpg');
+    background-image: url('hero-steak.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -95,6 +95,27 @@ h2 {
 #hero h1, #hero p {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 1rem;
+}
+
+#menu-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+#menu-categories button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#menu-categories button:hover {
+    background-color: var(--accent-color);
 }
 
 #menu-items {
@@ -164,7 +185,7 @@ button {
 }
 
 button:hover {
-    background-color: #c19b2e;
+    background-color: #9e7209;
 }
 
 footer {
@@ -173,6 +194,33 @@ footer {
     text-align: center;
     padding: 1rem;
     margin-top: 2rem;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 4px;
+    color: #fff;
+    z-index: 1001;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.error {
+    background-color: #f44336;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
